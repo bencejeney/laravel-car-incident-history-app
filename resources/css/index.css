@@ -1,0 +1,57 @@
+/* Alapértelmezett betűtípus és szín */
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    margin: auto;
+    text-align: center;
+}
+
+/* Címek */
+h1, h2, h3 {
+    font-family: Georgia, serif;
+    color: #666;
+}
+
+/* Űrlap */
+form {
+    margin-top: 20px;
+}
+
+/* Űrlap mezők */
+.form-group {
+    margin-bottom: 10px;
+}
+
+/* Űrlap gomb */
+button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Táblázat */
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+/* Táblázat fejléc */
+th {
+    background-color: #007bff;
+    color: #fff;
+    text-align: left;
+    padding: 10px;
+}
+
+/* Táblázat sorok */
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Táblázat cellák */
+td {
+    padding: 10px;
+}
