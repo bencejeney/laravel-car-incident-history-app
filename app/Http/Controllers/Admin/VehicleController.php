@@ -55,18 +55,18 @@ class VehicleController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        // Megtartjuk az eredeti képet, hacsak a felhasználó nem tölt fel újat
+        // Keep the original image if the user doesn't want to upload a new one
         $imagePath = $vehicle->image_path;
 
         if ($request->hasFile('image')) {
-            // Ha a felhasználó új képet töltött fel, akkor a régit töröljük
+            // Delete old image if the user uploaded a new image
             Storage::disk('public')->delete($vehicle->image_path);
 
-            // Feltöltjük az új képet
+            // Upload new image
             $imagePath = $request->file('image')->store('vehicle_images', 'public');
         }
 
-        // Jármű adatainak frissítése
+        // Update vehicle details
         $vehicle->update([
             'brand' => $request->input('brand'),
             'type' => $request->input('type'),

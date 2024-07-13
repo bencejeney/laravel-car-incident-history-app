@@ -20,19 +20,19 @@ class SearchController extends Controller
         $vehicle = Vehicle::where('license_plate', $license_plate)->first();
 
         if (!$vehicle) {
-            return redirect()->back()->withErrors(['license_plate' => 'A keresett rendszám nem található.']);
+            return redirect()->back()->withErrors(['license_plate' => 'License plate not found.']);
         }
 
-        // Keresési előzmény mentése
+        // Save search result
         if (Auth::check()) {
             SearchHistory::create([
-                'searched_license_plate' => $rendszam,
+                'searched_license_plate' => $license_plate,
                 'search_time' => now(),
                 'user_id' => Auth::id(),
             ]);
         }
 
-        // A keresési eredmény megjelenítése
+        // Show search result
         return view('search_results', ['vehicle' => $vehicle]);
     }
 }

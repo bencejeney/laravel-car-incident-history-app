@@ -19,6 +19,6 @@ class Admin
             return $next($request);
         }
 
-        return redirect('/')->with('error', 'Csak adminisztrátoroknak engedélyezett hozzáférés.');
+        return redirect('/')->with('error', 'Only administrators can access.');
     }
 }

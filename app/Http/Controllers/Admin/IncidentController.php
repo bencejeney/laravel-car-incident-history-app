@@ -12,7 +12,7 @@ class IncidentController extends Controller
         return view('incident.show', compact('incident'));
     }
 
-    // Káresemény létrehozása
+    // Create incident
     public function __construct()
     {
         $this->middleware('premium')->only('show');
@@ -40,13 +40,13 @@ class IncidentController extends Controller
             'description' => $request->input('description'),
         ]);
 
-        // Hozzárendeljük a kiválasztott járműveket a káreseményhez
+        // Assign selected vehicles to incident
         $incident->vehicles()->attach($request->input('vehicles'));
 
         return redirect()->route('admin.incident.create')->with('success', 'Káresemény sikeresen létrehozva.');
     }
 
-    // Káresemény szerkesztése
+    // Edit incident
     public function edit(Incident $incident)
     {
         $vehicles = Vehicle::all();
@@ -63,26 +63,26 @@ class IncidentController extends Controller
             'vehicles.*' => 'required|distinct|exists:vehicles,id',
         ]);
 
-        // Frissítjük a káresemény adatait
+        // Update incident details
         $incident->update([
             'location' => $request->input('location'),
             'datetime' => $request->input('datetime'),
             'description' => $request->input('description'),
         ]);
 
-        // Káreseményhez hozzárendelt járművek frissítése
+        // Update vehicles assigned to the incident
         $incident->vehicles()->sync($request->input('vehicles'));
 
         return redirect()->route('admin.incident.edit', $incident->id)->with('success', 'Káresemény adatai sikeresen frissítve.');
     }
 
-    // Káresemény törlése
+    // Remove incident
     public function destroy(Incident $incident)
     {
-        // Törlés előtt a hozzárendelt járműveket is eltávolítjuk
+        // Remove vehicles assigned to the incident
         $incident->vehicles()->detach();
 
-        // Töröljük magát a káreseményt
+        // Remove the incident itself
         $incident->delete();
 
         return redirect()->route('admin.incident.index')->with('success', 'Káresemény sikeresen törölve.');

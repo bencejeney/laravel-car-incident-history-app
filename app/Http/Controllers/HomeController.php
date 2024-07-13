@@ -17,22 +17,22 @@ class HomeController extends Controller
 
     public function search(Request $request)
     {
-        // Ellenőrizze, hogy a felhasználó be van-e jelentkezve
+        // Check if the user is logged in
 
         if (!auth()->check()) {
             return redirect()->route('login')->with('warning', 'Log in first!');
         }
 
-        // Ellenőrizze a keresőmezőt
+        // Validate search field
         $request->validate([
             'license_plate' => 'required|regex:/^[A-Za-z]{3}[0-9]{3}$/',
         ]);
 
-        // Keresés a járművekhez tartozó káresemények között
+        // Search between incidents
         $licensePlate = strtoupper($request->input('license_plate'));
         $vehicle = Vehicle::where('license_plate', $licensePlate)->first();
         /*
-        // Mentés a keresési előzmények közé
+        // Save search history
         auth()->user()->searchHistories()->create([
             'searched_license_plate' => $licensePlate,
             'search_time' => now(),

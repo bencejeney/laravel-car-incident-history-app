@@ -1,16 +1,16 @@
 <x-app-layout>
     <x-slot name="title">Search History</x-slot>
     <div class="container">
-        <h1>Keresési előzmények</h1>
+        <h1>Search History</h1>
         @if ($searchHistories->isEmpty())
-            <p>Nincs keresési előzmény.</p>
+            <p>Search history is empty.</p>
         @else
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Rendszám</th>
-                        <th>Keresés ideje</th>
-                        <th>Akció</th>
+                        <th>License plate</th>
+                        <th>Search time</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -19,7 +19,7 @@
                             <td>{{ $history->searched_license_plate }}</td>
                             <td>{{ $history->search_time }}</td>
                             <td>
-                                <a href="{{ route('search', ['license_plate' => $history->searched_license_plate]) }}" class="btn btn-primary btn-sm">Keresés újra</a>
+                                <a href="{{ route('search', ['license_plate' => $history->searched_license_plate]) }}" class="btn btn-primary btn-sm">Search again</a>
                             </td>
                         </tr>
                     @endforeach

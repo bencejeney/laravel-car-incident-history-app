@@ -34,7 +34,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::put('/incident/{incident}', [IncidentController::class, 'update'])->name('admin.incident.update');
     Route::delete('/incident/{incident}', [IncidentController::class, 'destroy'])->name('admin.incident.destroy');
     Route::get('/users', [UserController::class, 'index'])->name('admin.users.index');
-    Route::post('/users/{user}/toggle-premium', [UserController::class, 'togglePremium'])->name('admin.users.togglePremium');
+    Route::post('/users/{user}/togglePremium', [UserController::class, 'togglePremium'])->name('admin.users.togglePremium');
 });
 
 Route::get('/dashboard', function () {

@@ -17,6 +17,6 @@ class UserController extends Controller
     public function togglePremium(User $user)
     {
         $user->update(['is_premium' => !$user->is_premium]);
-        return redirect()->back()->with('success', 'Prémium státusz frissítve.');
+        return redirect()->back()->with('success', 'Premium status updated.');
     }
 }
