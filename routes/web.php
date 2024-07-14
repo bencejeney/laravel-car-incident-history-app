@@ -23,6 +23,7 @@ Route::get('/', [HomeController::class, 'index']);
 Route::post('/search', [HomeController::class, 'search'])->name('search');
 Route::get('/incident/{incident}', [IncidentController::class, 'show'])->name('incident.show');
 Route::get('/search-history', [SearchHistoryController::class, 'index'])->name('search.history.index')->middleware('auth');
+
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/vehicle/create', [VehicleController::class, 'create'])->name('admin.vehicle.create');
     Route::post('/vehicle/store', [VehicleController::class, 'store'])->name('admin.vehicle.store');

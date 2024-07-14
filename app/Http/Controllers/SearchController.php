@@ -11,11 +11,7 @@ class SearchController extends Controller
 {
     public function search(Request $request)
     {
-        $request->validate([
-            'license_plate' => 'required|regex:/^[a-zA-Z]{3}-?[0-9]{3}$/'
-        ]);
-
-        $license_plate = strtoupper(str_replace('-', '', $request->input('license_plate')));
+        $license_plate = strtoupper($request->input('license_plate'));
 
         $vehicle = Vehicle::where('license_plate', $license_plate)->first();
 

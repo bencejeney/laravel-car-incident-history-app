@@ -1,31 +1,43 @@
 <x-app-layout>
     <x-slot name="title">Search Results</x-slot>
-    <div class="container">
-        <h1>Search results</h1>
+    <div class="py-6 px-6 content-center">
+        <h1>Search results</h1><br>
         @if ($vehicle)
             <h2>Vehicle details</h2>
-            <p>License plate: {{ $vehicle->license_plate }}</p>
-            <p>Brand: {{ $vehicle->brand }}</p>
-            <p>Model: {{ $vehicle->type }}</p>
-            <p>Manufacture year: {{ $vehicle->manufacture_year }}</p>
-            <img src="{{ $vehicle->image }}" alt="{{ $vehicle->license_plate }}" style="max-width: 300px;">
+            <ul class="content-center">
+                <li>
+                    <p>License plate: {{ $vehicle->license_plate }}</p>
+                </li>
+                <li>
+                    <p>Brand: {{ $vehicle->brand }}</p>
+                </li>
+                <li>
+                    <p>Model: {{ $vehicle->type }}</p>
+                </li>
+                <li>
+                    <p>Manufacture year: {{ $vehicle->manufacture_year }}</p>
+                </li>
+                <li>
+                    <img src="{{ asset('storage/' . $vehicle->image) }}" alt="{{ $vehicle->license_plate }}" style="max-width: 300px;">
+                </li>
+            </ul>
 
             @if ($incidents->count() > 0)
                 <h2>Incidents</h2>
-                <table class="table">
-                    <thead>
+                <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
-                            <th>Location</th>
-                            <th>Timestamp</th>
-                            <th>Description</th>
+                            <th scope="col" class="p-4">Location</th>
+                            <th scope="col" class="px-6 py-3">Timestamp</th>
+                            <th scope="col" class="px-6 py-3">Description</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($incidents as $incident)
-                            <tr>
-                                <td>{{ $incident->location }}</td>
-                                <td>{{ $incident->datetime }}</td>
-                                <td><a href="{{ route('incident.show', $incident->id) }}">{{ $incident->description }}</a></td>
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                <td class="px-6 py-4">{{ $incident->location }}</td>
+                                <td class="px-6 py-4">{{ $incident->datetime }}</td>
+                                <td class="px-6 py-4"><a href="{{ route('incident.show', $incident->id) }}">{{ $incident->description }}</a></td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -38,7 +50,7 @@
         @endif
         <br>
         @if(auth()->check() && auth()->user()->is_admin)
-            <a style="color: lightblue" href="{{ route('admin.vehicle.edit', $vehicle->id) }}">Edit</a>
+            <a href="{{ route('admin.vehicle.edit', $vehicle->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">Edit</a>
         @endif
     </div>
 </x-app-layout>

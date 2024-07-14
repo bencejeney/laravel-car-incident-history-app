@@ -25,7 +25,7 @@ class HomeController extends Controller
 
         // Validate search field
         $request->validate([
-            'license_plate' => 'required|regex:/^[A-Za-z]{3}[0-9]{3}$/',
+            'license_plate' => 'required|string',
         ]);
 
         // Search between incidents

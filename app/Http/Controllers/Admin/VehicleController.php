@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Vehicle;
+use Illuminate\Support\Facades\Storage;
 
 class VehicleController extends Controller
 {
@@ -16,7 +17,7 @@ class VehicleController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'license_plate' => 'required|regex:/^[A-Za-z]{3}-[0-9]{3}$/|unique:vehicles',
+            'license_plate' => 'required|string|unique:vehicles',
             'brand' => 'required|string',
             'type' => 'required|string',
             'manufacture_year' => 'required|integer',
@@ -30,10 +31,10 @@ class VehicleController extends Controller
             'brand' => $request->input('brand'),
             'type' => $request->input('type'),
             'manufacture_year' => $request->input('manufacture_year'),
-            'image_path' => $imagePath,
+            'image' => $imagePath,
         ]);
 
-        return redirect()->route('admin.vehicle.create')->with('success', 'Jármű sikeresen létrehozva.');
+        return redirect()->route('admin.vehicle.create')->with('success', 'Vehicle record has been created successfully.');
     }
 
     public function __construct()
@@ -74,6 +75,6 @@ class VehicleController extends Controller
             'image_path' => $imagePath,
         ]);
 
-        return redirect()->route('admin.vehicle.edit', $vehicle->id)->with('success', 'Jármű adatai sikeresen frissítve.');
+        return redirect()->route('admin.vehicle.edit', $vehicle->id)->with('success', 'Vehicle details successfully updated.');
     }
 }
