@@ -31,16 +31,16 @@ class HomeController extends Controller
         // Search between incidents
         $licensePlate = strtoupper($request->input('license_plate'));
         $vehicle = Vehicle::where('license_plate', $licensePlate)->first();
-        /*
+
+        if (!$vehicle) {
+            return redirect()->back()->with('error', 'License plate not found.');
+        }
+
         // Save search history
         auth()->user()->searchHistories()->create([
             'searched_license_plate' => $licensePlate,
             'search_time' => now(),
         ]);
-        */
-        if (!$vehicle) {
-            return redirect()->back()->with('error', 'License plate not found.');
-        }
 
         $incidents = $vehicle->incidents()->orderBy('datetime', 'desc')->get();
 

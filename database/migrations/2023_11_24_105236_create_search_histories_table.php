@@ -15,9 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('searched_license_plate');
             $table->datetime('search_time');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

@@ -10,9 +10,8 @@ class SearchHistoryController extends Controller
 {
     public function index()
     {
-        $searchHistories = SearchHistory::where('user_id', Auth::id())->paginate(10);
-
-        return view('search-history.index', ['searchHistories' => $searchHistories]);
+        $searchHistories = auth()->user()->searchHistories()->orderBy('search_time', 'desc')->paginate(10);
+        return view('search-history.index', compact('searchHistories'));
     }
 }
 ?>
