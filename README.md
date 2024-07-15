@@ -2,6 +2,10 @@
 
 This is a Laravel web application to check the incident history of a car by license plate number.
 
+## Database
+
+I used Faker to upload some fake data to the database for testing, but I also added a few records manually.
+
 ## Home Page - Guest
 
 - Search - only available after logging in
@@ -25,8 +29,7 @@ This is a Laravel web application to check the incident history of a car by lice
 The admin user can also edit the vehicles and the incidents, and assign Premium to other users.
 
 ## Testing
-Open a terminal and run the command:
-php artisan serve
+Open a terminal, run the following command: <code>php artisan serve</code> and open the link from the terminal.
 
 - Admin user
 Email: jeney.bence@gmail.com
