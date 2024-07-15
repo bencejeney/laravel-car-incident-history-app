@@ -53,12 +53,6 @@
             </div>
 
             <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">Update incident</button>
-
-            <form method="post" action="{{ route('admin.incident.destroy', $incident->id) }}" style="display: inline;">
-                @csrf
-                @method('delete')
-                <button type="submit" class="bg-blue-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-red-700 rounded" onclick="return confirm('Are you sure you want to remove the incident?')">Remove incident</button>
-            </form>
         </form>
 
         <div class="mt-6">

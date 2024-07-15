@@ -19,6 +19,6 @@ class PremiumUser
             return $next($request);
         }
 
-        return redirect()->route('home')->with('error', 'Incident details are only available for premium users.');
+        return redirect('/')->with('error', 'Incident details are only available for premium users.');
     }
 }
