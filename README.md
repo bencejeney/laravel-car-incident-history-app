@@ -25,6 +25,9 @@ This is a Laravel web application to check the incident history of a car by lice
 The admin user can also edit the vehicles and the incidents, and assign Premium to other users.
 
 ## Testing
+Open a terminal and run the command:
+php artisan serve
+
 - Admin user
 Email: jeney.bence@gmail.com
 Password: abcd1234

@@ -57,5 +57,9 @@
             <br>
             <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">Update vehicle</button>
         </form>
+
+        <div class="mt-6">
+            <a href="{{ url('/') }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border border-green-700 rounded">Back to Home</a>
+        </div>
     </div>
 </x-app-layout>

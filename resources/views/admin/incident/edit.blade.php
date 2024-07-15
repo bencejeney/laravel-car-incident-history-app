@@ -60,5 +60,9 @@
                 <button type="submit" class="bg-blue-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-red-700 rounded" onclick="return confirm('Are you sure you want to remove the incident?')">Remove incident</button>
             </form>
         </form>
+
+        <div class="mt-6">
+            <a href="{{ url('/') }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border border-green-700 rounded">Back to Home</a>
+        </div>
     </div>
 </x-app-layout>

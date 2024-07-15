@@ -52,5 +52,9 @@
         @if(auth()->check() && auth()->user()->is_admin)
             <a href="{{ route('admin.vehicle.edit', $vehicle->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">Edit</a>
         @endif
+
+        <div class="mt-6">
+            <a href="{{ url('/') }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border border-green-700 rounded">Back to Home</a>
+        </div>
     </div>
 </x-app-layout>
