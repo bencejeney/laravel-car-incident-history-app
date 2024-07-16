@@ -52,7 +52,7 @@
                 @enderror
             </div>
 
-            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">Update incident</button>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">Update Incident</button>
         </form>
 
         <div class="mt-6">

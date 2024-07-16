@@ -50,7 +50,7 @@
         @endif
         <br>
         @if(auth()->check() && auth()->user()->is_admin)
-            <a href="{{ route('admin.vehicle.edit', $vehicle->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">Edit</a>
+            <a href="{{ route('admin.vehicle.edit', $vehicle->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">Edit Vehicle</a>
         @endif
 
         <div class="mt-6">
