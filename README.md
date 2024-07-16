@@ -29,7 +29,10 @@ I used Faker to upload some fake data to the database for testing, but I also ad
 The admin user can also edit the vehicles and the incidents, and assign Premium to other users.
 
 ## Testing
-Open a terminal, run the following command: <code>php artisan serve</code> and open the link from the terminal.
+Open a terminal, run the following commands:
+<br><code>npm install</code>
+<br><code>php artisan serve</code>
+<br>Open the link from the terminal.
 
 - Admin user
 Email: jeney.bence@gmail.com
